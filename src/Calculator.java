@@ -7,9 +7,9 @@ public class Calculator implements ActionListener {
     JFrame frame;
     JTextField textfield;
     JButton[] numberButtons = new JButton[10];
-    JButton[] functionButtons = new JButton[9];
+    JButton[] functionButtons = new JButton[10];
     JButton addButton,subButton,mulButton,divButton;
-    JButton decButton, equButton, delButton, clrButton, negButton;
+    JButton decButton, equButton, delButton, clrButton, negButton, squButton;
     JPanel panel;
 
     Font myFont = new Font("Comic Sans",Font.BOLD,30);
@@ -37,9 +37,10 @@ public class Calculator implements ActionListener {
         divButton = new JButton("/");
         decButton = new JButton(".");
         equButton = new JButton("=");
-        delButton = new JButton("del");
+        delButton = new JButton("<");
         clrButton = new JButton("clr");
         negButton = new JButton("+/-");
+        squButton = new JButton("^2");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -50,8 +51,9 @@ public class Calculator implements ActionListener {
         functionButtons[6] = delButton;
         functionButtons[7] = clrButton;
         functionButtons[8] = negButton;
+        functionButtons[9] = squButton;
 
-        for(int i =0;i<9;i++) {
+        for(int i =0;i<10;i++) {
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false);
@@ -64,9 +66,10 @@ public class Calculator implements ActionListener {
             numberButtons[i].setFocusable(false);
         }
 
-        negButton.setBounds(50,430,100,50);
-        delButton.setBounds(150,430,100,50);
-        clrButton.setBounds(250,430,100,50);
+        negButton.setBounds(50,430,75,50);
+        delButton.setBounds(125,430,75,50);
+        clrButton.setBounds(200,430,75,50);
+        squButton.setBounds(275,430,75,50);
 
         panel = new JPanel();
         panel.setBounds(50,100,300,300);
@@ -92,6 +95,7 @@ public class Calculator implements ActionListener {
 
         frame.add(panel);
         frame.add(negButton);
+        frame.add(squButton);
         frame.add(delButton);
         frame.add(clrButton);
         frame.add(textfield);
@@ -169,7 +173,13 @@ public class Calculator implements ActionListener {
            temp*=-1;
            textfield.setText(String.valueOf(temp));
     }
+
+if(e.getSource()==squButton) { 
+    double temp = Double.parseDouble(textfield.getText());
+    temp*= temp;
+    textfield.setText(String.valueOf(temp));
 }
         }
+    }
     
 
