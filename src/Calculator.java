@@ -38,7 +38,7 @@ public class Calculator implements ActionListener {
         divButton = new JButton("/");
         decButton = new JButton(".");
         equButton = new JButton("=");
-        delButton = new JButton("<");
+        delButton = new JButton("del");
         clrButton = new JButton("clr");
         negButton = new JButton("+/-");
         squButton = new JButton("^2");
@@ -69,11 +69,11 @@ public class Calculator implements ActionListener {
             numberButtons[i].setFocusable(false);
         }
 
-        negButton.setBounds(50,430,75,50);
-        delButton.setBounds(125,430,75,50);
-        clrButton.setBounds(200,430,75,50);
-        squButton.setBounds(275,430,75,50);
-        sqrButton.setBounds(50,480,150,50);
+        negButton.setBounds(50,430,100,50);
+        squButton.setBounds(150,430,100,50);
+        sqrButton.setBounds(250,430,100,50);
+        delButton.setBounds(50,480,150,50);
+        clrButton.setBounds(200,480,150,50);
 
         panel = new JPanel();
         panel.setBounds(50,100,300,300);
@@ -83,19 +83,19 @@ public class Calculator implements ActionListener {
        panel.add(numberButtons[1]);
        panel.add(numberButtons[2]);
        panel.add(numberButtons[3]);
-       panel.add(addButton);
+       panel.add(divButton);
        panel.add(numberButtons[4]);
        panel.add(numberButtons[5]);
        panel.add(numberButtons[6]);
-       panel.add(subButton);
+       panel.add(mulButton);
        panel.add(numberButtons[7]);
        panel.add(numberButtons[8]);
        panel.add(numberButtons[9]);
-       panel.add(mulButton);
+       panel.add(subButton);
        panel.add(decButton);
        panel.add(numberButtons[0]);
        panel.add(equButton);
-       panel.add(divButton);
+       panel.add(addButton);
 
         frame.add(panel);
         frame.add(negButton);
