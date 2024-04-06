@@ -6,11 +6,12 @@ public class Calculator implements ActionListener {
 
     JFrame frame;
     JTextField textfield;
-    JButton[] numberButtons = new JButton[11];
-    JButton[] functionButtons = new JButton[11];
+    JButton[] numberButtons = new JButton[12];
+    JButton[] functionButtons = new JButton[18];
     JButton addButton,subButton,mulButton,divButton;
     JButton decButton, equButton, delButton, clrButton, negButton, squButton;
-    JButton sqrButton;
+    JButton sqrButton, piiButton, eeeButton, absButton, expButton, logButton,lnlButton;
+    JButton facButton;
     JPanel panel;
 
     Font myFont = new Font("Comic Sans",Font.BOLD,30);
@@ -23,7 +24,7 @@ public class Calculator implements ActionListener {
 
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420, 600);
+        frame.setSize(420, 700);
         frame.setLayout(null);
         frame.setResizable(false);
         
@@ -43,6 +44,13 @@ public class Calculator implements ActionListener {
         negButton = new JButton("+/-");
         squButton = new JButton("x²");
         sqrButton = new JButton("√");
+        piiButton = new JButton ("π");
+        eeeButton = new JButton("e");
+        absButton = new JButton("|x|");
+        expButton = new JButton("xʸ");
+        logButton = new JButton("log");
+        lnlButton = new JButton("ln");
+        facButton = new JButton("x!");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -55,8 +63,15 @@ public class Calculator implements ActionListener {
         functionButtons[8] = negButton;
         functionButtons[9] = squButton;
         functionButtons[10] = sqrButton;
+        functionButtons[11] = piiButton;
+        functionButtons[12] = eeeButton;
+        functionButtons[13] = absButton;
+        functionButtons[14] = expButton;
+        functionButtons[15] = logButton;
+        functionButtons[16] = lnlButton;
+        functionButtons[17] = facButton;
 
-        for(int i =0;i<11;i++) {
+        for(int i =0;i<18;i++) {
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false);
@@ -69,16 +84,23 @@ public class Calculator implements ActionListener {
             numberButtons[i].setFocusable(false);
         }
 
-        negButton.setBounds(50,430,100,50);
-        squButton.setBounds(150,430,100,50);
-        sqrButton.setBounds(250,430,100,50);
-        delButton.setBounds(50,480,150,50);
-        clrButton.setBounds(200,480,150,50);
+        negButton.setBounds(250,100,100,50);
+        squButton.setBounds(50,500,100,50);
+        expButton.setBounds(150,500,100,50);
+        sqrButton.setBounds(250,500,100,50);
+        delButton.setBounds(50,100,100,50);
+        clrButton.setBounds(150,100,100,50);
+        piiButton.setBounds(50,550,100,50);
+        eeeButton.setBounds(150,550,100,50);
+        absButton.setBounds(250,550,100,50);
+        logButton.setBounds(50,600,100,50);
+        lnlButton.setBounds(150,600,100,50);
+        facButton.setBounds(250,600,100,50);
 
         panel = new JPanel();
-        panel.setBounds(50,100,300,300);
+        panel.setBounds(50,175,300,300);
         panel.setLayout(new GridLayout(4,4,10,10));
-       // panel.setBackground(Color.green);
+        //panel.setBackground(Color.green);
 
        panel.add(numberButtons[1]);
        panel.add(numberButtons[2]);
@@ -103,6 +125,13 @@ public class Calculator implements ActionListener {
         frame.add(delButton);
         frame.add(clrButton);
         frame.add(sqrButton);
+        frame.add(piiButton);
+        frame.add(eeeButton);
+        frame.add(absButton);
+        frame.add(expButton);
+        frame.add(logButton);
+        frame.add(lnlButton);
+        frame.add(facButton);
         frame.add(textfield);
         frame.setVisible(true);
 
@@ -189,7 +218,21 @@ if(e.getSource()==sqrButton) {
     temp/= Math.sqrt(temp);
     textfield.setText(String.valueOf(temp));
         }
+        if (e.getSource() == piiButton) {
+            double pi = Math.PI;
+            textfield.setText(String.valueOf(pi));
+        }        
+ if (e.getSource() == eeeButton) {
+            double eulersNumber = Math.E;
+            textfield.setText(String.valueOf(eulersNumber));
+        }
+if (e.getSource()==absButton) {
+    double temp = Double.parseDouble(textfield.getText());
+    temp = Math.abs(temp);
+    textfield.setText(String.valueOf(temp));
+}
     }
+
 }
     
 
