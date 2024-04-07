@@ -7,11 +7,11 @@ public class Calculator implements ActionListener {
     JFrame frame;
     JTextField textfield;
     JButton[] numberButtons = new JButton[12];
-    JButton[] functionButtons = new JButton[18];
+    JButton[] functionButtons = new JButton[21];
     JButton addButton,subButton,mulButton,divButton;
     JButton decButton, equButton, delButton, clrButton, negButton, squButton;
     JButton sqrButton, piiButton, eeeButton, absButton, expButton, logButton,lnlButton;
-    JButton facButton;
+    JButton facButton, sinButton, cosButton, tanButton;
     JPanel panel;
 
     Font myFont = new Font("Comic Sans",Font.BOLD,30);
@@ -24,7 +24,7 @@ public class Calculator implements ActionListener {
 
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420, 700);
+        frame.setSize(420, 750);
         frame.setLayout(null);
         frame.setResizable(false);
         
@@ -51,6 +51,9 @@ public class Calculator implements ActionListener {
         logButton = new JButton("log");
         lnlButton = new JButton("ln");
         facButton = new JButton("x!");
+        sinButton = new JButton("sin");
+        cosButton = new JButton("cos");
+        tanButton = new JButton("tan");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -70,8 +73,11 @@ public class Calculator implements ActionListener {
         functionButtons[15] = logButton;
         functionButtons[16] = lnlButton;
         functionButtons[17] = facButton;
+        functionButtons[18] = sinButton;
+        functionButtons[19] = cosButton;
+        functionButtons[20] = tanButton;
 
-        for(int i =0;i<18;i++) {
+        for(int i =0;i<21;i++) {
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false);
@@ -96,6 +102,9 @@ public class Calculator implements ActionListener {
         logButton.setBounds(50,600,100,50);
         lnlButton.setBounds(150,600,100,50);
         facButton.setBounds(250,600,100,50);
+        sinButton.setBounds(50,650,100,50);
+        cosButton.setBounds(150,650,100,50);
+        tanButton.setBounds(250,650,100,50);
 
         panel = new JPanel();
         panel.setBounds(50,175,300,300);
@@ -132,6 +141,9 @@ public class Calculator implements ActionListener {
         frame.add(logButton);
         frame.add(lnlButton);
         frame.add(facButton);
+        frame.add(sinButton);
+        frame.add(cosButton);
+        frame.add(tanButton);
         frame.add(textfield);
         frame.setVisible(true);
 
@@ -231,8 +243,52 @@ if (e.getSource()==absButton) {
     temp = Math.abs(temp);
     textfield.setText(String.valueOf(temp));
 }
-    }
+if (e.getSource() == facButton) {
+    int factorialNumber = Integer.parseInt(textfield.getText());
+    int factorialResult = factorial(factorialNumber);
+    textfield.setText(String.valueOf(factorialResult));
+}
+if (e.getSource() == logButton) {
+    double number = Double.parseDouble(textfield.getText());
+    double logResult = Math.log10(number);
+    textfield.setText(String.valueOf(logResult));
+}
+if (e.getSource() == lnlButton) {
+    double number = Double.parseDouble(textfield.getText());
+    double lnResult = Math.log(number);
+    textfield.setText(String.valueOf(lnResult));
+}
+if (e.getSource() == expButton) {
+    double base = num1;
+    double exponent = Double.parseDouble(textfield.getText());
+    double result = Math.pow(base, exponent);
+    textfield.setText(String.valueOf(result));
+}
+if (e.getSource() == sinButton) {
+    double angle = Double.parseDouble(textfield.getText());
+    double sinResult = Math.sin(Math.toRadians(angle));
+    textfield.setText(String.valueOf(sinResult));
+}
+if (e.getSource() == cosButton) {
+    double angle = Double.parseDouble(textfield.getText());
+    double cosResult = Math.cos(Math.toRadians(angle));
+    textfield.setText(String.valueOf(cosResult));
+}
+if (e.getSource() == tanButton) {
+    double angle = Double.parseDouble(textfield.getText());
+    double tanResult = Math.tan(Math.toRadians(angle));
+    textfield.setText(String.valueOf(tanResult));
+}
 
 }
+public int factorial(int n) {
+    if (n == 0)
+        return 1;
+    else
+        return n * factorial(n - 1);
+}
+
+    }
+
     
 
