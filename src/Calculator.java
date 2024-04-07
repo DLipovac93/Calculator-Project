@@ -7,14 +7,14 @@ public class Calculator implements ActionListener {
     JFrame frame;
     JTextField textfield;
     JButton[] numberButtons = new JButton[12];
-    JButton[] functionButtons = new JButton[21];
+    JButton[] functionButtons = new JButton[25];
     JButton addButton,subButton,mulButton,divButton;
     JButton decButton, equButton, delButton, clrButton, negButton, squButton;
     JButton sqrButton, piiButton, eeeButton, absButton, expButton, logButton,lnlButton;
-    JButton facButton, sinButton, cosButton, tanButton;
+    JButton facButton, sinButton, cosButton, tanButton, sndButton, isiButton, icoButton,itaButton;
     JPanel panel;
 
-    Font myFont = new Font("Comic Sans",Font.BOLD,30);
+    Font myFont = new Font("Times New Roman",Font.BOLD,30);
 
     double num1=0,num2=0,result=0;
     char operator;
@@ -24,7 +24,7 @@ public class Calculator implements ActionListener {
 
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420, 750);
+        frame.setSize(420, 850);
         frame.setLayout(null);
         frame.setResizable(false);
         
@@ -54,6 +54,10 @@ public class Calculator implements ActionListener {
         sinButton = new JButton("sin");
         cosButton = new JButton("cos");
         tanButton = new JButton("tan");
+        sndButton = new JButton("2nd");
+        isiButton = new JButton("sin");
+        icoButton = new JButton("cos");
+        itaButton = new JButton("tan");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -76,8 +80,12 @@ public class Calculator implements ActionListener {
         functionButtons[18] = sinButton;
         functionButtons[19] = cosButton;
         functionButtons[20] = tanButton;
+        functionButtons[21] = sndButton;
+        functionButtons[22] = isiButton;
+        functionButtons[23] = icoButton;
+        functionButtons[24] = itaButton;
 
-        for(int i =0;i<21;i++) {
+        for(int i =0;i<25;i++) {
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false);
@@ -105,6 +113,10 @@ public class Calculator implements ActionListener {
         sinButton.setBounds(50,650,100,50);
         cosButton.setBounds(150,650,100,50);
         tanButton.setBounds(250,650,100,50);
+        sndButton.setBounds(50,700,100,50);
+        isiButton.setBounds(50,650,100,50);
+        icoButton.setBounds(150,650,100,50);
+        itaButton.setBounds(250,650,100,50);
 
         panel = new JPanel();
         panel.setBounds(50,175,300,300);
@@ -143,6 +155,7 @@ public class Calculator implements ActionListener {
         frame.add(facButton);
         frame.add(sinButton);
         frame.add(cosButton);
+        frame.add(sndButton);
         frame.add(tanButton);
         frame.add(textfield);
         frame.setVisible(true);
@@ -278,6 +291,10 @@ if (e.getSource() == tanButton) {
     double angle = Double.parseDouble(textfield.getText());
     double tanResult = Math.tan(Math.toRadians(angle));
     textfield.setText(String.valueOf(tanResult));
+}
+if (e.getSource() == sndButton) {
+    frame.add(tanButton);
+    frame.remove(sinButton);
 }
 
 }
