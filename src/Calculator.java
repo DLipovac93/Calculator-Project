@@ -24,7 +24,7 @@ public class Calculator implements ActionListener {
 
         frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(420, 850);
+        frame.setSize(420, 750);
         frame.setLayout(null);
         frame.setResizable(false);
         
@@ -55,9 +55,9 @@ public class Calculator implements ActionListener {
         cosButton = new JButton("cos");
         tanButton = new JButton("tan");
         sndButton = new JButton("2nd");
-        isiButton = new JButton("sin");
-        icoButton = new JButton("cos");
-        itaButton = new JButton("tan");
+        isiButton = new JButton("sin²");
+        icoButton = new JButton("cos²");
+        itaButton = new JButton("tan²");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -100,23 +100,26 @@ public class Calculator implements ActionListener {
 
         negButton.setBounds(250,100,100,50);
         squButton.setBounds(50,500,100,50);
-        expButton.setBounds(150,500,100,50);
-        sqrButton.setBounds(250,500,100,50);
+        expButton.setBounds(50,500,100,50);
+        sqrButton.setBounds(150,500,100,50);
         delButton.setBounds(50,100,100,50);
         clrButton.setBounds(150,100,100,50);
         piiButton.setBounds(50,550,100,50);
-        eeeButton.setBounds(150,550,100,50);
+        eeeButton.setBounds(50,550,100,50);
         absButton.setBounds(250,550,100,50);
-        logButton.setBounds(50,600,100,50);
-        lnlButton.setBounds(150,600,100,50);
-        facButton.setBounds(250,600,100,50);
-        sinButton.setBounds(50,650,100,50);
-        cosButton.setBounds(150,650,100,50);
-        tanButton.setBounds(250,650,100,50);
-        sndButton.setBounds(50,700,100,50);
-        isiButton.setBounds(50,650,100,50);
-        icoButton.setBounds(150,650,100,50);
-        itaButton.setBounds(250,650,100,50);
+        logButton.setBounds(250,500,100,50);
+        lnlButton.setBounds(250,500,100,50);
+        facButton.setBounds(150,550,100,50);
+        sinButton.setBounds(50,600,100,50);
+        cosButton.setBounds(150,600,100,50);
+        tanButton.setBounds(250,600,100,50);
+        sndButton.setBounds(50,650,300,50);
+        isiButton.setBounds(50,600,100,50);
+        icoButton.setBounds(150,600,100,50);
+        itaButton.setBounds(250,600,100,50);
+        // Log location = ln location
+        // pi location = e location
+        // squ location = exp button
 
         panel = new JPanel();
         panel.setBounds(50,175,300,300);
@@ -147,16 +150,19 @@ public class Calculator implements ActionListener {
         frame.add(clrButton);
         frame.add(sqrButton);
         frame.add(piiButton);
-        frame.add(eeeButton);
+        //frame.add(eeeButton);
         frame.add(absButton);
-        frame.add(expButton);
+        //frame.add(expButton);
         frame.add(logButton);
-        frame.add(lnlButton);
+        //frame.add(lnlButton);
         frame.add(facButton);
         frame.add(sinButton);
         frame.add(cosButton);
         frame.add(sndButton);
         frame.add(tanButton);
+        //frame.add(isiButton);
+        //frame.add(icoButton);
+        //frame.add(itaButton);
         frame.add(textfield);
         frame.setVisible(true);
 
@@ -293,8 +299,7 @@ if (e.getSource() == tanButton) {
     textfield.setText(String.valueOf(tanResult));
 }
 if (e.getSource() == sndButton) {
-    frame.add(tanButton);
-    frame.remove(sinButton);
+
 }
 
 }
