@@ -7,12 +7,12 @@ public class Calculator implements ActionListener {
     JFrame frame;
     JTextField textfield;
     JButton[] numberButtons = new JButton[12];
-    JButton[] functionButtons = new JButton[26];
+    JButton[] functionButtons = new JButton[27];
     JButton addButton,subButton,mulButton,divButton;
     JButton decButton, equButton, delButton, clrButton, negButton, squButton;
     JButton sqrButton, piiButton, eeeButton, absButton, expButton, logButton,lnlButton;
     JButton facButton, sinButton, cosButton, tanButton, sndButton, isiButton, icoButton,itaButton;
-    JButton nndButton;
+    JButton nndButton, cbrButton;
     JPanel panel;
 
     Font myFont = new Font("Times New Roman",Font.BOLD,30);
@@ -60,6 +60,8 @@ public class Calculator implements ActionListener {
         icoButton = new JButton("cos⁻¹");
         itaButton = new JButton("tan⁻¹");
         nndButton = new JButton("2nd");
+        cbrButton = new JButton("3√");
+        //cbrButton = new JButton("∛");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -87,8 +89,9 @@ public class Calculator implements ActionListener {
         functionButtons[23] = icoButton;
         functionButtons[24] = itaButton;
         functionButtons[25] = nndButton;
+        functionButtons[26] = cbrButton;
 
-        for(int i =0;i<26;i++) {
+        for(int i =0;i<27;i++) {
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false);
@@ -121,6 +124,7 @@ public class Calculator implements ActionListener {
         icoButton.setBounds(150,600,100,50);
         itaButton.setBounds(250,600,100,50);
         nndButton.setBounds(50,650,300,50);
+        cbrButton.setBounds(150,500,100,50);
         // Log location = ln location
         // pi location = e location
         // squ location = exp button
@@ -281,6 +285,7 @@ if (e.getSource() == lnlButton) {
     double lnResult = Math.log(number);
     textfield.setText(String.valueOf(lnResult));
 }
+//TODO: Add fuction to exponent button
 if (e.getSource() == expButton) {
     double base = num1;
     double exponent = Double.parseDouble(textfield.getText());
@@ -310,6 +315,7 @@ if (e.getSource() == sndButton) {
     frame.remove(logButton);
     frame.remove(squButton);
     frame.remove(sndButton);
+    frame.remove(sqrButton);
     frame.add(isiButton);
     frame.add(icoButton);
     frame.add(itaButton);
@@ -317,6 +323,7 @@ if (e.getSource() == sndButton) {
     frame.add(lnlButton);
     frame.add(expButton);
     frame.add(nndButton);
+    frame.add(cbrButton);
     frame.revalidate();
     frame.repaint();
 }
@@ -328,6 +335,7 @@ if (e.getSource() == nndButton) {
     frame.add(logButton);
     frame.add(squButton);
     frame.add(sndButton);
+    frame.add(sqrButton);
     frame.remove(isiButton);
     frame.remove(icoButton);
     frame.remove(itaButton);
@@ -335,8 +343,19 @@ if (e.getSource() == nndButton) {
     frame.remove(lnlButton);
     frame.remove(expButton);
     frame.remove(nndButton);
+    frame.remove(cbrButton);
     frame.revalidate();
     frame.repaint();
+}
+if(e.getSource()==cbrButton) { 
+    double temp = Double.parseDouble(textfield.getText());
+    Math.cbrt(temp);
+    textfield.setText(String.valueOf(temp));
+    //TODO: fix cuberoot function
+        }
+if (e.getSource() == isiButton) {
+    double temp = Double.parseDouble(textfield.getText());
+    Math.sinh(temp);
 }
 
 }
@@ -346,7 +365,7 @@ public int factorial(int n) {
     else
         return n * factorial(n - 1);
 }
-
+//TODO: add funtions to isi,ico,ita buttons
     }
 
     
