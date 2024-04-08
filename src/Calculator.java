@@ -7,11 +7,12 @@ public class Calculator implements ActionListener {
     JFrame frame;
     JTextField textfield;
     JButton[] numberButtons = new JButton[12];
-    JButton[] functionButtons = new JButton[25];
+    JButton[] functionButtons = new JButton[26];
     JButton addButton,subButton,mulButton,divButton;
     JButton decButton, equButton, delButton, clrButton, negButton, squButton;
     JButton sqrButton, piiButton, eeeButton, absButton, expButton, logButton,lnlButton;
     JButton facButton, sinButton, cosButton, tanButton, sndButton, isiButton, icoButton,itaButton;
+    JButton nndButton;
     JPanel panel;
 
     Font myFont = new Font("Times New Roman",Font.BOLD,30);
@@ -55,9 +56,10 @@ public class Calculator implements ActionListener {
         cosButton = new JButton("cos");
         tanButton = new JButton("tan");
         sndButton = new JButton("2nd");
-        isiButton = new JButton("sin²");
-        icoButton = new JButton("cos²");
-        itaButton = new JButton("tan²");
+        isiButton = new JButton("sin⁻¹");
+        icoButton = new JButton("cos⁻¹");
+        itaButton = new JButton("tan⁻¹");
+        nndButton = new JButton("2nd");
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -84,8 +86,9 @@ public class Calculator implements ActionListener {
         functionButtons[22] = isiButton;
         functionButtons[23] = icoButton;
         functionButtons[24] = itaButton;
+        functionButtons[25] = nndButton;
 
-        for(int i =0;i<25;i++) {
+        for(int i =0;i<26;i++) {
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false);
@@ -117,6 +120,7 @@ public class Calculator implements ActionListener {
         isiButton.setBounds(50,600,100,50);
         icoButton.setBounds(150,600,100,50);
         itaButton.setBounds(250,600,100,50);
+        nndButton.setBounds(50,650,300,50);
         // Log location = ln location
         // pi location = e location
         // squ location = exp button
@@ -299,7 +303,40 @@ if (e.getSource() == tanButton) {
     textfield.setText(String.valueOf(tanResult));
 }
 if (e.getSource() == sndButton) {
-
+    frame.remove(sinButton);
+    frame.remove(cosButton);
+    frame.remove(tanButton);
+    frame.remove(piiButton);
+    frame.remove(logButton);
+    frame.remove(squButton);
+    frame.remove(sndButton);
+    frame.add(isiButton);
+    frame.add(icoButton);
+    frame.add(itaButton);
+    frame.add(eeeButton);
+    frame.add(lnlButton);
+    frame.add(expButton);
+    frame.add(nndButton);
+    frame.revalidate();
+    frame.repaint();
+}
+if (e.getSource() == nndButton) {
+    frame.add(sinButton);
+    frame.add(cosButton);
+    frame.add(tanButton);
+    frame.add(piiButton);
+    frame.add(logButton);
+    frame.add(squButton);
+    frame.add(sndButton);
+    frame.remove(isiButton);
+    frame.remove(icoButton);
+    frame.remove(itaButton);
+    frame.remove(eeeButton);
+    frame.remove(lnlButton);
+    frame.remove(expButton);
+    frame.remove(nndButton);
+    frame.revalidate();
+    frame.repaint();
 }
 
 }
