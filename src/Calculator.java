@@ -105,26 +105,26 @@ public class Calculator implements ActionListener {
         }
 
         negButton.setBounds(250,100,100,50);
-        squButton.setBounds(50,500,100,50);
-        expButton.setBounds(50,500,100,50);
-        sqrButton.setBounds(150,500,100,50);
+        squButton.setBounds(50,550,100,50);
+        expButton.setBounds(50,550,100,50);
+        sqrButton.setBounds(150,550,100,50);
         delButton.setBounds(50,100,100,50);
         clrButton.setBounds(150,100,100,50);
-        piiButton.setBounds(50,550,100,50);
-        eeeButton.setBounds(50,550,100,50);
-        absButton.setBounds(250,550,100,50);
-        logButton.setBounds(250,500,100,50);
-        lnlButton.setBounds(250,500,100,50);
-        facButton.setBounds(150,550,100,50);
-        sinButton.setBounds(50,600,100,50);
-        cosButton.setBounds(150,600,100,50);
-        tanButton.setBounds(250,600,100,50);
-        sndButton.setBounds(50,650,300,50);
-        isiButton.setBounds(50,600,100,50);
-        icoButton.setBounds(150,600,100,50);
-        itaButton.setBounds(250,600,100,50);
-        nndButton.setBounds(50,650,300,50);
-        cbrButton.setBounds(150,500,100,50);
+        piiButton.setBounds(50,600,100,50);
+        eeeButton.setBounds(50,600,100,50);
+        absButton.setBounds(250,600,100,50);
+        logButton.setBounds(250,550,100,50);
+        lnlButton.setBounds(250,550,100,50);
+        facButton.setBounds(150,600,100,50);
+        sinButton.setBounds(50,650,100,50);
+        cosButton.setBounds(150,650,100,50);
+        tanButton.setBounds(250,650,100,50);
+        sndButton.setBounds(50,500,300,50);
+        isiButton.setBounds(50,650,100,50);
+        icoButton.setBounds(150,650,100,50);
+        itaButton.setBounds(250,650,100,50);
+        nndButton.setBounds(50,500,300,50);
+        cbrButton.setBounds(150,550,100,50);
         // Log location = ln location
         // pi location = e location
         // squ location = exp button
@@ -287,9 +287,7 @@ if (e.getSource() == lnlButton) {
 }
 //TODO: Add fuction to exponent button
 if (e.getSource() == expButton) {
-    double base = num1;
-    double exponent = Double.parseDouble(textfield.getText());
-    double result = Math.pow(base, exponent);
+    double result = Math.pow(num1, num2);
     textfield.setText(String.valueOf(result));
 }
 if (e.getSource() == sinButton) {
@@ -356,6 +354,8 @@ if(e.getSource()==cbrButton) {
 if (e.getSource() == isiButton) {
     double temp = Double.parseDouble(textfield.getText());
     Math.sinh(temp);
+    textfield.setText(String.valueOf(temp));
+    //TODO: Fix isi
 }
 
 }
