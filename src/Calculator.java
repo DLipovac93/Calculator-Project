@@ -7,13 +7,16 @@ public class Calculator implements ActionListener {
     JFrame frame;
     JTextField textfield;
     JButton[] numberButtons = new JButton[12];
-    JButton[] functionButtons = new JButton[27];
+    JButton[] functionButtons = new JButton[32];
     JButton addButton,subButton,mulButton,divButton;
     JButton decButton, equButton, delButton, clrButton, negButton, squButton;
     JButton sqrButton, piiButton, eeeButton, absButton, expButton, logButton,lnlButton;
     JButton facButton, sinButton, cosButton, tanButton, sndButton, isiButton, icoButton,itaButton;
-    JButton nndButton, cbrButton;
+    JButton nndButton, cbrButton, degButton, radButton, rsiButton, rcoButton, rtaButton;
     JPanel panel;
+    // TODO: add more JPanels?
+    // r = radians
+    // i = inverse
 
     Font myFont = new Font("Times New Roman",Font.BOLD,30);
 
@@ -62,6 +65,12 @@ public class Calculator implements ActionListener {
         nndButton = new JButton("2nd");
         cbrButton = new JButton("3√");
         //cbrButton = new JButton("∛");
+        degButton = new JButton("deg");
+        radButton = new JButton("rad");
+        rsiButton = new JButton("sin");
+        rcoButton = new JButton("cos");
+        rtaButton = new JButton("tan");
+
 
         functionButtons[0] = addButton;
         functionButtons[1] = subButton;
@@ -90,8 +99,13 @@ public class Calculator implements ActionListener {
         functionButtons[24] = itaButton;
         functionButtons[25] = nndButton;
         functionButtons[26] = cbrButton;
+        functionButtons[27] = degButton;
+        functionButtons[28] = radButton;
+        functionButtons[29] = rsiButton;
+        functionButtons[30] = rcoButton;
+        functionButtons[31] = rtaButton;
 
-        for(int i =0;i<27;i++) {
+        for(int i =0;i<32;i++) {
             functionButtons[i].addActionListener(this);
             functionButtons[i].setFont(myFont);
             functionButtons[i].setFocusable(false);
@@ -104,12 +118,18 @@ public class Calculator implements ActionListener {
             numberButtons[i].setFocusable(false);
         }
 
+        // Primary Functions
         negButton.setBounds(250,100,100,50);
+        clrButton.setBounds(150,100,100,50);
+        delButton.setBounds(50,100,100,50);
+        sndButton.setBounds(50,500,200,50);
+        nndButton.setBounds(50,500,200,50);
+        degButton.setBounds(250,500,100,50);
+        radButton.setBounds(250,500,100,50);
+        // Other Functions
         squButton.setBounds(50,550,100,50);
         expButton.setBounds(50,550,100,50);
         sqrButton.setBounds(150,550,100,50);
-        delButton.setBounds(50,100,100,50);
-        clrButton.setBounds(150,100,100,50);
         piiButton.setBounds(50,600,100,50);
         eeeButton.setBounds(50,600,100,50);
         absButton.setBounds(250,600,100,50);
@@ -119,12 +139,13 @@ public class Calculator implements ActionListener {
         sinButton.setBounds(50,650,100,50);
         cosButton.setBounds(150,650,100,50);
         tanButton.setBounds(250,650,100,50);
-        sndButton.setBounds(50,500,300,50);
         isiButton.setBounds(50,650,100,50);
         icoButton.setBounds(150,650,100,50);
         itaButton.setBounds(250,650,100,50);
-        nndButton.setBounds(50,500,300,50);
         cbrButton.setBounds(150,550,100,50);
+        rsiButton.setBounds(50,650,100,50);
+        rcoButton.setBounds(150,650,100,50);
+        rtaButton.setBounds(250,650,100,50);
         // Log location = ln location
         // pi location = e location
         // squ location = exp button
@@ -152,6 +173,7 @@ public class Calculator implements ActionListener {
        panel.add(addButton);
 
         frame.add(panel);
+        frame.add(degButton);
         frame.add(negButton);
         frame.add(squButton);
         frame.add(delButton);
@@ -295,14 +317,29 @@ if (e.getSource() == sinButton) {
     double sinResult = Math.sin(Math.toRadians(angle));
     textfield.setText(String.valueOf(sinResult));
 }
+if (e.getSource() == rsiButton) {
+    double angle = Double.parseDouble(textfield.getText());
+    double sinResult = Math.sin(Math.toDegrees(angle));
+    textfield.setText(String.valueOf(sinResult));
+}
 if (e.getSource() == cosButton) {
     double angle = Double.parseDouble(textfield.getText());
     double cosResult = Math.cos(Math.toRadians(angle));
     textfield.setText(String.valueOf(cosResult));
 }
+if (e.getSource() == rcoButton) {
+    double angle = Double.parseDouble(textfield.getText());
+    double cosResult = Math.cos(Math.toDegrees(angle));
+    textfield.setText(String.valueOf(cosResult));
+}
 if (e.getSource() == tanButton) {
     double angle = Double.parseDouble(textfield.getText());
     double tanResult = Math.tan(Math.toRadians(angle));
+    textfield.setText(String.valueOf(tanResult));
+}
+if (e.getSource() == rtaButton) {
+    double angle = Double.parseDouble(textfield.getText());
+    double tanResult = Math.tan(Math.toDegrees(angle));
     textfield.setText(String.valueOf(tanResult));
 }
 if (e.getSource() == sndButton) {
@@ -356,6 +393,32 @@ if (e.getSource() == isiButton) {
     Math.sinh(temp);
     textfield.setText(String.valueOf(temp));
     //TODO: Fix isi
+}
+
+if (e.getSource() == degButton) {
+    frame.remove(degButton);
+    frame.remove(sinButton);
+    frame.remove(cosButton);
+    frame.remove(tanButton);
+    frame.add(rsiButton);
+    frame.add(rcoButton);
+    frame.add(rtaButton);
+    frame.add(radButton);
+    frame.revalidate();
+    frame.repaint();
+}
+
+if (e.getSource() == radButton) {
+    frame.remove(radButton);
+    frame.remove(rsiButton);
+    frame.remove(rcoButton);
+    frame.remove(rtaButton);
+    frame.add(sinButton);
+    frame.add(cosButton);
+    frame.add(tanButton);
+    frame.add(degButton);
+    frame.revalidate();
+    frame.repaint();
 }
 
 }
