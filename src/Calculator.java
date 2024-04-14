@@ -13,8 +13,7 @@ public class Calculator implements ActionListener {
     JButton sqrButton, piiButton, eeeButton, absButton, expButton, logButton,lnlButton;
     JButton facButton, sinButton, cosButton, tanButton, sndButton, isiButton, icoButton,itaButton;
     JButton nndButton, cbrButton, degButton, radButton, rsiButton, rcoButton, rtaButton;
-    JPanel panel;
-    // TODO: add more JPanels?
+    JPanel panel, panel1, panel2;
     // r = radians
     // i = inverse
 
@@ -151,9 +150,15 @@ public class Calculator implements ActionListener {
         // squ location = exp button
 
         panel = new JPanel();
+        panel1 = new JPanel();
+        panel2 = new JPanel();
         panel.setBounds(50,175,300,300);
+        panel1.setBounds(50,550,300,150);
+        panel2.setBounds(50,550,300,150);
         panel.setLayout(new GridLayout(4,4,10,10));
-        //panel.setBackground(Color.green);
+        panel1.setLayout(new GridLayout(3,3,0,0));
+        panel2.setLayout(new GridLayout(3,3,0,0));
+        // panel1.setBackground(Color.green);
 
        panel.add(numberButtons[1]);
        panel.add(numberButtons[2]);
@@ -173,6 +178,7 @@ public class Calculator implements ActionListener {
        panel.add(addButton);
 
         frame.add(panel);
+        // frame.add(panel1);
         frame.add(degButton);
         frame.add(negButton);
         frame.add(squButton);
